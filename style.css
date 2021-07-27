@@ -5,10 +5,14 @@
  * 	#D5C5C8 - Black Shadows
  */
 /**
- * Title
+ * Generic
  */
  	h1 {
- 		margin-left: 50%;
+ 		text-align:  center;
+ 	}
+
+ 	body {
+ 		background-color: #D5C5C8;
  	}
 
 /**
@@ -18,10 +22,13 @@
 		margin-left:  33%;
 		display: grid; 
 		gap: 0px; 
-		width: 600px; height: 600px; 
+		width: 650px; height: 650px; 
+		padding: 25px;
 		grid-template-columns: repeat(16, 1fr);
 	 	grid-template-rows: repeat(16, 1fr);
 		margin-top: 2vw;
+		background-color:  #5A7684;
+		border-radius:  4%;
 	}
 
 /**
@@ -57,8 +64,7 @@
 	}
 	input[type='range'] {
 		-webkit-appearance: none;
-		color:  darkred;
-		width: 600px;
+		width: 700px;
 	}
 
 	input[type='range']:focus {

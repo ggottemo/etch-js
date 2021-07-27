@@ -33,6 +33,7 @@ for (let i = 0; i < val ; i++) {
 	for(let k = 0; k < val; k++) {
 	let div = document.createElement('div');
 		div.classList.add('grid-square');
+		div.addEventListener('mouseover', (e) => e.target.style.backgroundColor = RICH_BLACK);
 	window.container.appendChild(div);
 		}
 	}
@@ -46,11 +47,10 @@ function setup(){
 	for(let k = 0; k < 16; k++) {
 	let orgDiv = document.createElement('div');
 	orgDiv.classList.add('grid-square');
+	orgDiv.addEventListener('mouseover', (e) => e.target.style.backgroundColor = RICH_BLACK);
 	window.container.appendChild(orgDiv);
 	}
 }
-//Set attrs of container to facilitate grid display
-container.setAttribute('style', ``);
 }
 /** removeAllChildren() -> removes all Children from parent 
  * @param  {parent node}
