@@ -1,0 +1,104 @@
+/** Colors:
+ *  #5A7684 - Cadet
+ * 	#90FCF9 - Electric Blue
+ * 	#011627 - Rich Black FOGRA 29
+ * 	#D5C5C8 - Black Shadows
+ */
+/**
+ * Title
+ */
+ 	h1 {
+ 		margin-left: 50%;
+ 	}
+
+/**
+ * Grid Container
+ */
+	.container {
+		margin-left:  33%;
+		display: grid; 
+		gap: 0px; 
+		width: 600px; height: 600px; 
+		grid-template-columns: repeat(16, 1fr);
+	 	grid-template-rows: repeat(16, 1fr);
+		margin-top: 2vw;
+	}
+
+/**
+ * Grid Item
+ */
+	.grid-square {
+		backgroundColor: #90FCF9;
+		 border: 1px solid black;
+	}
+
+/**
+ * Buttons
+ */
+	.buttons {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		width: 25%;
+		margin-left: 40%;
+
+	}
+	button {
+		height: 20px;
+		width: 50px;
+		margin: auto;
+
+	}
+
+/*Slider*/
+	.slideContainer {
+		margin-left: 33%;
+		margin-top:  2vh;
+	}
+	input[type='range'] {
+		-webkit-appearance: none;
+		color:  darkred;
+		width: 600px;
+	}
+
+	input[type='range']:focus {
+		outline:  none;
+	}
+	/**
+	 * Browser Specific Tracks
+	 */
+		input[type='range']::-webkit-slider-runnable-track {
+			background:  	#90FCF9;
+			border-radius:  11%;
+			width: ;
+		}
+
+		input[type='range']::-moz-range-track{
+
+
+		}
+
+	/**
+	 * Browser Specific Thumbs
+	 */
+		input[type='range']::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width:  15px;
+			height: 15px;
+			background:  #5A7684;
+			border-radius:  60%;
+		}
+
+		input[type='range']::-moz-range-thumb {
+
+		}
+/**
+ * Text input
+ */
+ 	input[type="text"] {
+ 		width: 50px;
+ 		margin-left: 50%;
+ 		text-align: center;
+ 	}
+
+
