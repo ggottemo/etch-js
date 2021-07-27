@@ -25,9 +25,7 @@ function generateDivs(e) {
 let val = Number(e.target.value);
 console.log(val);
 p.value = val;
-window.container.setAttribute('style', `display: grid; gap: 0px; width: 600px; height: 600px; 
-						grid-template-columns: repeat(${val}, 1fr); grid-template-rows: repeat(${val}, 1fr);
-						margin-top: 2vw;`);
+window.container.setAttribute('style',`grid-template-columns: repeat(${val}, 1fr); grid-template-rows: repeat(${val}, 1fr);`)
 console.log(`Value = '${Number(val)}'`);
 for (let i = 0; i < val ; i++) {
 	for(let k = 0; k < val; k++) {

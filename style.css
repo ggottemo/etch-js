@@ -74,8 +74,8 @@
 	 * Browser Specific Tracks
 	 */
 		input[type='range']::-webkit-slider-runnable-track {
-			background:  	#90FCF9;
-			border-radius:  11%;
+			background:  	#5A7684;
+			border-radius:  1%;
 			width: ;
 		}
 
@@ -91,7 +91,7 @@
 			-webkit-appearance: none;
 			width:  15px;
 			height: 15px;
-			background:  #5A7684;
+			background:  #90FCF9;
 			border-radius:  60%;
 		}
 
