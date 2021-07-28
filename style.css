@@ -4,6 +4,12 @@
  * 	#011627 - Rich Black FOGRA 29
  * 	#D5C5C8 - Black Shadows
  */
+ 	:root {
+ 		--grid-bg: #5A7684;
+ 		--slider-button:  #90FCF9;
+ 		--grid-square: #011627;
+ 		--main-bg: #D5C5C8;
+ 	}
 /**
  * Generic
  */
@@ -12,14 +18,15 @@
  	}
 
  	body {
- 		background-color: #D5C5C8;
+ 		background-color: var(--main-bg);
  	}
 
 /**
  * Grid Container
  */
 	.container {
-		margin-left:  33%;
+		margin-left:  auto;
+		margin-right: auto;
 		display: grid; 
 		gap: 0px; 
 		width: 650px; height: 650px; 
@@ -27,7 +34,7 @@
 		grid-template-columns: repeat(16, 1fr);
 	 	grid-template-rows: repeat(16, 1fr);
 		margin-top: 2vw;
-		background-color:  #5A7684;
+		background-color:  var(--grid-bg);
 		border-radius:  4%;
 	}
 
@@ -35,7 +42,7 @@
  * Grid Item
  */
 	.grid-square {
-		backgroundColor: #90FCF9;
+		backgroundColor: var(--slider-button);
 		 border: 1px solid black;
 	}
 
@@ -59,12 +66,18 @@
 
 /*Slider*/
 	.slideContainer {
-		margin-left: 33%;
+		display:  block;
+		margin-left: auto;
+		margin-right: auto;
 		margin-top:  2vh;
+
 	}
 	input[type='range'] {
+		display: block;
+		margin: 1vh auto;
 		-webkit-appearance: none;
 		width: 700px;
+		background: var(--grid-bg);
 	}
 
 	input[type='range']:focus {
@@ -74,9 +87,9 @@
 	 * Browser Specific Tracks
 	 */
 		input[type='range']::-webkit-slider-runnable-track {
-			background:  	#5A7684;
-			border-radius:  1%;
-			width: ;
+			background:  	var(--grid-bg);
+			border-radius:  10px;
+			
 		}
 
 		input[type='range']::-moz-range-track{
@@ -91,7 +104,7 @@
 			-webkit-appearance: none;
 			width:  15px;
 			height: 15px;
-			background:  #90FCF9;
+			background:  var(--slider-button);
 			border-radius:  60%;
 		}
 

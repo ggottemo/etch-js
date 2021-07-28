@@ -16,6 +16,13 @@ p.setAttribute('type', 'text'); p.setAttribute('value', slider.value);
 p.textContent = slider.value;
 body.insertBefore(p, container);
 
+/** mouseOver(item, color) -> adds event listener to specified node object.
+ * @param  item -> Element Object
+ * @param  color -> String of valid css color 
+ */
+function mouseOver(item, color){
+	item.addEventListener('mouseover', (e) => e.target.style.backgroundColor = color);
+}
 
 /** generateDivs(e) -> Create new grid based on slider value
  *  Generate new amount of divs.
@@ -31,11 +38,10 @@ for (let i = 0; i < val ; i++) {
 	for(let k = 0; k < val; k++) {
 	let div = document.createElement('div');
 		div.classList.add('grid-square');
-		div.addEventListener('mouseover', (e) => e.target.style.backgroundColor = RICH_BLACK);
+		mouseOver(div, RICH_BLACK);
 	window.container.appendChild(div);
 		}
-	}
-	
+	}	
 }
 /** setup() -> initial grid setup
  * @return {None}
@@ -45,7 +51,7 @@ function setup(){
 	for(let k = 0; k < 16; k++) {
 	let orgDiv = document.createElement('div');
 	orgDiv.classList.add('grid-square');
-	orgDiv.addEventListener('mouseover', (e) => e.target.style.backgroundColor = RICH_BLACK);
+	mouseOver(orgDiv, RICH_BLACK);
 	window.container.appendChild(orgDiv);
 	}
 }
