@@ -15,13 +15,21 @@ let p = document.createElement('input');
 p.setAttribute('type', 'text'); p.setAttribute('value', slider.value);
 p.textContent = slider.value;
 body.insertBefore(p, container);
-
+let clearBtn = document.querySelector('#btn-1');
 /** mouseOver(item, color) -> adds event listener to specified node object.
  * @param  item -> Element Object
  * @param  color -> String of valid css color 
  */
-function mouseOver(item, color){
-	item.addEventListener('mouseover', (e) => e.target.style.backgroundColor = color);
+function mouseOver(item){
+	item.addEventListener('mouseover', (e) => e.target.setAttribute('style', 'animation: colorSquare 1s 1; animation-fill-mode: forwards; '));
+}
+/** 
+ *  clearGrid() -> sets color of all grid squares to base color.
+ */
+function clearGrid(){
+	for (let i = 0; i < window.container.children.length; i++) {
+		window.container.children[i].setAttribute('style', 'animation: clearGrid 1s 1; animation-fill-mode: forwards;');
+	}
 }
 
 /** generateDivs(e) -> Create new grid based on slider value
@@ -38,7 +46,7 @@ for (let i = 0; i < val ; i++) {
 	for(let k = 0; k < val; k++) {
 	let div = document.createElement('div');
 		div.classList.add('grid-square');
-		mouseOver(div, RICH_BLACK);
+		mouseOver(div);
 	window.container.appendChild(div);
 		}
 	}	
@@ -51,7 +59,7 @@ function setup(){
 	for(let k = 0; k < 16; k++) {
 	let orgDiv = document.createElement('div');
 	orgDiv.classList.add('grid-square');
-	mouseOver(orgDiv, RICH_BLACK);
+	mouseOver(orgDiv);
 	window.container.appendChild(orgDiv);
 	}
 }
@@ -72,8 +80,9 @@ function removeAllChildren(parent) {
 setup();
 
 //Event Listeners to change grid on input
+clearBtn.addEventListener('click', clearGrid);
 slider.addEventListener('input', generateDivs);
 p.addEventListener('input', function(e) {
  window.slider.value = e.target.value;
- generateDivs(e)
+ generateDivs(e);
 });

@@ -15,10 +15,12 @@
  */
  	h1 {
  		text-align:  center;
+ 		;
  	}
 
  	body {
  		background-color: var(--main-bg);
+ 		font-family: "Monaco", monospace
  	}
 
 /**
@@ -42,7 +44,7 @@
  * Grid Item
  */
 	.grid-square {
-		backgroundColor: var(--slider-button);
+		background-color: var(--grid-bg);
 		 border: 1px solid black;
 	}
 
@@ -61,6 +63,7 @@
 		height: 20px;
 		width: 50px;
 		margin: auto;
+		font-family: "Monaco", monospace;
 
 	}
 
@@ -118,6 +121,18 @@
  		width: 50px;
  		margin-left: 50%;
  		text-align: center;
+ 		font-family: "Monaco", monospace;
  	}
 
 
+ /**
+  * Animations
+  */
+  	@keyframes colorSquare {
+  	from {background-color: var(--grid-bg);}
+	to {background-color: var(--grid-square);}
+  	}
+  	  	@keyframes clearGrid {
+  	from {background-color: var(--grid-square);}
+	to {background-color: var(--grid-bg);}
+  	}
