@@ -1,12 +1,3 @@
-/** Colors:
- *  #5A7684 - Cadet
- * 	#90FCF9 - Electric Blue
- * 	#011627 - Rich Black FOGRA 29
- * 	#D5C5C8 - Black Shadows
- */
-const CADET = '#5A7684'; const ELECTRIC_BLUE = '#5A7684';
-const RICH_BLACK = '#011627'; const BLACK_SHADOWS = '#D5C5C8';
-
 //Declare vars for later use, along with display slider value
 var body = document.querySelector('body');
 var container  = document.querySelector('.container');
@@ -21,14 +12,20 @@ let clearBtn = document.querySelector('#btn-1');
  * @param  color -> String of valid css color 
  */
 function mouseOver(item){
-	item.addEventListener('mouseover', (e) => e.target.setAttribute('style', 'animation: colorSquare 1s 1; animation-fill-mode: forwards; '));
+	item.setAttribute('data-filled', "false"); //Add Data attr to keep track of filled squares
+	item.addEventListener('mouseover', function(e) {
+	 e.target.setAttribute('style', 'animation: colorSquare 1s 1; animation-fill-mode: forwards; ');
+	 e.target.setAttribute('data-filled', 'true');
+	})
 }
 /** 
  *  clearGrid() -> sets color of all grid squares to base color.
  */
 function clearGrid(){
 	for (let i = 0; i < window.container.children.length; i++) {
-		window.container.children[i].setAttribute('style', 'animation: clearGrid 1s 1; animation-fill-mode: forwards;');
+				if (window.container.children[i].getAttribute('data-filled') == 'true'){
+					window.container.children[i].setAttribute('style', 'animation: clearGrid 1s 1; animation-fill-mode: forwards;');
+				}
 	}
 }
 
@@ -38,10 +35,9 @@ function clearGrid(){
 function generateDivs(e) {
 	removeAllChildren(window.container);
 let val = Number(e.target.value);
-console.log(val);
 p.value = val;
 window.container.setAttribute('style',`grid-template-columns: repeat(${val}, 1fr); grid-template-rows: repeat(${val}, 1fr);`)
-console.log(`Value = '${Number(val)}'`);
+//DEBUG console.log(`Value = '${Number(val)}'`); 
 for (let i = 0; i < val ; i++) {
 	for(let k = 0; k < val; k++) {
 	let div = document.createElement('div');

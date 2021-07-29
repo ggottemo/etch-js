@@ -5,10 +5,11 @@
  * 	#D5C5C8 - Black Shadows
  */
  	:root {
- 		--grid-bg: #5A7684;
- 		--slider-button:  #90FCF9;
- 		--grid-square: #011627;
- 		--main-bg: #D5C5C8;
+ 		--grid-bg: #004a5e;
+ 		--slider-button:  #476072;
+ 		--grid-square: #548CA8;
+ 		--main-bg: #334257;
+ 		--grid-edge: #93b7be;
  	}
 /**
  * Generic
@@ -36,7 +37,7 @@
 		grid-template-columns: repeat(16, 1fr);
 	 	grid-template-rows: repeat(16, 1fr);
 		margin-top: 2vw;
-		background-color:  var(--grid-bg);
+		background-color:  var(--grid-edge);
 		border-radius:  4%;
 	}
 
@@ -56,7 +57,7 @@
 		flex-flow: row nowrap;
 		justify-content: center;
 		width: 25%;
-		margin-left: 40%;
+		margin: 1vh auto;
 
 	}
 	button {
@@ -90,8 +91,9 @@
 	 * Browser Specific Tracks
 	 */
 		input[type='range']::-webkit-slider-runnable-track {
-			background:  	var(--grid-bg);
+			background:  	var(--grid-edge);
 			border-radius:  10px;
+			height:  12px;
 			
 		}
 
@@ -105,21 +107,31 @@
 	 */
 		input[type='range']::-webkit-slider-thumb {
 			-webkit-appearance: none;
-			width:  15px;
-			height: 15px;
+			width:  20px;
+			height: 20px;
 			background:  var(--slider-button);
 			border-radius:  60%;
+			margin-top:  -10px;
 		}
 
 		input[type='range']::-moz-range-thumb {
 
 		}
 /**
- * Text input
+ * Text Container
+ */
+ 	.textContainer {
+ 		display: block;
+ 		margin:  1vh auto;
+ 		width: 100px;
+ 	}
+/**
+ * Text Input
  */
  	input[type="text"] {
  		width: 50px;
- 		margin-left: 50%;
+ 		display: block;
+ 		margin: 1vh auto;
  		text-align: center;
  		font-family: "Monaco", monospace;
  	}
@@ -136,3 +148,4 @@
   	from {background-color: var(--grid-square);}
 	to {background-color: var(--grid-bg);}
   	}
+
