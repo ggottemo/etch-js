@@ -6,18 +6,59 @@ let p = document.createElement('input');
 p.setAttribute('type', 'text'); p.setAttribute('value', slider.value);
 p.textContent = slider.value;
 body.insertBefore(p, container);
+//Button vars
 let clearBtn = document.querySelector('#btn-1');
 let borderBtn = document.querySelector('#btn-2');
+let rainbowBtn = document.querySelector('#btn-3'); let rainbowToggled = false;
+let grayBtn = document.querySelector('#btn-4'); let grayToggled = false;
+
 /** mouseOver(item, color) -> adds event listener to specified node object.
  * @param  item -> Element Object
  * @param  color -> String of valid css color 
  */
 function mouseOver(item){
 	item.setAttribute('data-filled', "false"); //Add Data attr to keep track of filled squares
-	item.addEventListener('mouseover', function(e) {
-	 e.target.setAttribute('style', 'animation: colorSquare 1s 1; animation-fill-mode: forwards; ');
-	 e.target.setAttribute('data-filled', 'true');
-	})
+	item.addEventListener('mouseover', window.normHandler )
+}
+
+/**
+ * randomRGB() -> get random rgb color
+ */
+function randomRGB() {
+	let rgbString ="";
+	for (let i = 0; i < 3; i++) {
+	let temp = Math.floor(Math.random() * 255);
+	rgbString += temp;
+	if (i != 2) rgbString += ',';
+	}
+	return rgbString;
+}
+/**
+ * addRainbow() -> adds rainbow event
+ */
+function addRainbow(){
+for (let i = 0; i < window.container.children.length; i++){
+			window.container.children[i].removeEventListener('mouseover' , window.normHandler);
+			window.container.children[i].addEventListener('mouseover',window.rgbHandler)
+
+		}
+}
+/**
+ * rainbowToggled() -> add listeners if rainbowToggled is false, or remove them if true.
+ */
+function rainbowToggle(){
+	//console.log(rainbowToggled);
+	if (!rainbowToggled){
+		rainbowToggled	= true;
+		addRainbow();
+	}
+	else {
+		rainbowToggled	= false;
+		for (let i = 0; i < window.container.children.length; i++) {
+				window.container.children[i].removeEventListener('mouseover', window.rgbHandler);
+				mouseOver(window.container.children[i]);
+		}
+	}
 }
 /** 
  *  clearGrid() -> sets color of all grid squares to base color.
@@ -54,7 +95,9 @@ for (let i = 0; i < val ; i++) {
 		mouseOver(div);
 	window.container.appendChild(div);
 		}
-	}	
+	}
+	if (rainbowToggled)
+	addRainbow();	
 }
 /** setup() -> initial grid setup
  * @return {None}
@@ -78,13 +121,25 @@ function removeAllChildren(parent) {
 		parent.removeChild(parent.firstChild);
 	}
 }
+/**
+ * Handlers for removing mouseover events.
+ */
+var rgbHandler = function(e) {
+				e.target.setAttribute('style', `background-color: rgb(${randomRGB()})`);
+				e.target.setAttribute('data-filled', 'true');
+				this.removeEventListener('mouseover', rgbHandler); // only change color of square once
+			};
+var normHandler = function(e) {
+	 e.target.setAttribute('style', 'animation: colorSquare 1s 1; animation-fill-mode: forwards; ');
+	 e.target.setAttribute('data-filled', 'true');
+	};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                    END PREP                                                           //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 setup();
-
 //Event Listeners to change grid on input
+rainbowBtn.addEventListener('click', rainbowToggle);
 borderBtn.addEventListener('click', toggleBorders);
 clearBtn.addEventListener('click', clearGrid);
 slider.addEventListener('input', generateDivs);

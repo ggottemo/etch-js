@@ -48,6 +48,7 @@
  */
 	.grid-square {
 		background-color: var(--grid-bg);
+		transition:  background-color linear .2s;
 	}
 	.borders {
 		border: 1px solid black;
