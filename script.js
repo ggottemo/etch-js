@@ -7,6 +7,7 @@ p.setAttribute('type', 'text'); p.setAttribute('value', slider.value);
 p.textContent = slider.value;
 body.insertBefore(p, container);
 let clearBtn = document.querySelector('#btn-1');
+let borderBtn = document.querySelector('#btn-2');
 /** mouseOver(item, color) -> adds event listener to specified node object.
  * @param  item -> Element Object
  * @param  color -> String of valid css color 
@@ -26,6 +27,14 @@ function clearGrid(){
 				if (window.container.children[i].getAttribute('data-filled') == 'true'){
 					window.container.children[i].setAttribute('style', 'animation: clearGrid 1s 1; animation-fill-mode: forwards;');
 				}
+	}
+}
+/**
+ * toggleBorders() -> toggles class that adds border to cells
+ */
+function toggleBorders(){
+	for (let i = 0; i < window.container.children.length; i++) {
+		window.container.children[i].classList.toggle('borders');
 	}
 }
 
@@ -76,6 +85,7 @@ function removeAllChildren(parent) {
 setup();
 
 //Event Listeners to change grid on input
+borderBtn.addEventListener('click', toggleBorders);
 clearBtn.addEventListener('click', clearGrid);
 slider.addEventListener('input', generateDivs);
 p.addEventListener('input', function(e) {
